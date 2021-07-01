@@ -36,6 +36,8 @@ function App() {
       {todoList.map((item, index) => (
         <h3 key={index}>{item}</h3>
       ))}
+
+      {todoList.length == 0 && <div>No Todo List</div>}
     </div>
   );
 }
