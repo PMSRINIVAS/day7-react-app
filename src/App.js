@@ -3,26 +3,21 @@ import "./App.css";
 import { useState } from "react";
 
 function App() {
-  //let tempCounter=100;
-  //This is a method.
-  //This method is special; Since it starts with USE prefix.
-  //this special method is also known as HOOKS in React
-  let output = useState(100);
-  console.log(output);
+  //Its recommended for inline styling
+  let mystyle = { fontSize: 32, backgroundColor: "red" };
 
-  //DESTRUCTURING IS HAPPENNING
-  let [counter, setCounter] = useState(200);
-  let increment = () => {
-    setCounter(counter + 100);
-  };
   return (
     <div>
-      <h1>Hello World</h1>
-      <h1>{counter}</h1>
-      <h1>
-        <button onClick={increment}>INCREMENT</button>
-      </h1>
-      <h1>🔥</h1>
+      <h1>External Styling</h1>
+      <p className="primary">lorem sash dvhnds AJBAB</p>
+
+      <h1>Inline Styling in React</h1>
+      <p style={{ fontSize: 32, color: "tomato" }}>
+        lorem gsjamba xaghjsa xaghsnb --//this approach is not
+        recommended(inline css styling.)
+      </p>
+      {/**Style Using the Object */}
+      <p style={mystyle}>lorem gsjamba xaghjsa xaghsnb </p>
     </div>
   );
 }
