@@ -3,64 +3,39 @@ import "./App.css";
 import { useState } from "react";
 
 function App() {
-  //ARRAY DESTRUCTED
-  let [list, setList] = useState([]);
+  let [newtodo, setNewtodo] = useState();
+  let [todoList, setTodoList] = useState([]);
 
-  //1.
-  let [todoText, setToDotext] = useState("");
-  let updateToDotext = (e) => {
-    // console.log("Update the Input Box", e.target.value);
-    setToDotext(e.target.value);
+  const updateTodo = (e) => {
+    console.log(e.target);
+    setNewtodo(e.target.value);
   };
 
-  let addPost = () => {
-    console.log("Add Post Method");
-    //ARRAY CLONING
-    // const newList = ["New To-Do", ...list];
-    const newList = [todoText, ...list];
-    setList(newList);
+  const addTodo = () => {
+    console.log("I will add the ToDo");
+    const newlist = [newtodo, ...todoList];
+    setTodoList(newlist);
 
-    setToDotext("");
+    setNewtodo("");
   };
 
   return (
     <div>
-      <h2 className="bg-dark text-light p-3">Mini Book</h2>
+      <h1>Working with the forms</h1>
 
-      <div className="row">
-        <div className="col-9">
-          {/**
-           * 2.Update the value property
-           * 3. onChange event
-           * */}
-          <input
-            type="text"
-            value={todoText}
-            onChange={updateToDotext}
-            className="form-control form-control-lg"
-          />
-        </div>
-
-        <div className="col-3">
-          <input
-            type="button"
-            className="btn btn-lg btn-primary"
-            value="Add To-Do"
-            onClick={addPost}
-          />
-        </div>
+      <div>
+        <input
+          type="text"
+          value={newtodo}
+          onChange={updateTodo}
+          placeholder="ENTER YOUR TASK"
+        />
+        <input type="button" value="Add Todo" onClick={addTodo} />
       </div>
 
-      {list.map((item, index) => (
-        <div key={index} className="alert alert-secondary my-2">
-          {item}
-        </div>
+      {todoList.map((item, index) => (
+        <h3 key={index}>{item}</h3>
       ))}
-
-      {/** Conditional Logic */}
-      {list.length == 0 && (
-        <div className="alert alert-success my-1">You have no Pending Task</div>
-      )}
     </div>
   );
 }
