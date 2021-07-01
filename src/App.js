@@ -4,7 +4,7 @@ import { useState } from "react";
 
 function App() {
   //ARRAY DESTRUCTED
-  let [list, setList] = useState(["delhi"]);
+  let [list, setList] = useState([]);
 
   let addPost = () => {
     console.log("Add Post Method");
@@ -37,6 +37,11 @@ function App() {
           {item}
         </div>
       ))}
+
+      {/** Conditional Logic */}
+      {list.length == 0 && (
+        <div className="alert alert-success my-1">You have no Pending Task</div>
+      )}
     </div>
   );
 }
